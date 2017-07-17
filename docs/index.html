@@ -6,16 +6,21 @@
         <!-- ライブラリの読み込み -->
         <link rel="stylesheet" href="https://get.mavo.io/mavo.css"/>
         <script src="https://get.mavo.io/mavo.min.js"></script>
+        <script language="javascript" type="text/javascript">
+function TaskDone() {
+    target = document.getElementById("taskPoint");
+    target.innerHTML = parseInt(target.innerHTML) + 1;
+}
+        </script>
     </head>
     <body>
-        <div mv-app="myapp" mv-mode="edit" mv-bar="hide" mv-storage="local" mv-autosave>
-            <!-- タスク数とチェック数を数えてその差分を求める -->
-            <p>[count(task) - count(check)]個のタスクがあります</p>
+        <div mv-app="myapp" mv-mode="edit" mv-storage="local" mv-autosave>
+            <!-- 要素数のカウント -->
+            <p>[count(task)]個のタスクがあります</p>
+            <p><span property="taskPoint" id = taskPoint>0</span>Point</p>
             <ul>
                 <li property="task" mv-multiple>
-                    <!-- チェックボックスも保存対象にする -->
-                    <input property="check" type="checkbox" />
-                    <span property="title">サンプルのタスク</span>
+                    <input type="submit" value="done" onclick="TaskDone()"><span property="title">サンプルのタスク</span></input>
                 </li>
             </ul>
         </div>
